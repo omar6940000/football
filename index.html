@@ -23,6 +23,37 @@
 </head>
 <body>
 
+    <!-- Global Premium Sports Preloader -->
+    <div id="academy-preloader" class="preloader-overlay">
+        <div class="preloader-content">
+            <div class="preloader-spinner-box">
+                <div class="preloader-ring-gold"></div>
+                <div class="preloader-ring-green"></div>
+                <div class="preloader-ball-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--champions-gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        <path d="M2 12h20"></path>
+                    </svg>
+                </div>
+            </div>
+            <h2 class="preloader-text">جاري تحميل ساحة الأبطال... ⚡</h2>
+        </div>
+    </div>
+
+    <script>
+        // Smoothly fade preloader only when ALL assets (images, css, scripts) cache completely
+        window.addEventListener('load', function () {
+            const preloader = document.getElementById('academy-preloader');
+            if (preloader) {
+                preloader.classList.add('fade-out');
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 600);
+            }
+        });
+    </script>
+
     <!-- Vue App root container -->
     <div id="app" v-cloak>
 
