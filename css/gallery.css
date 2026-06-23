@@ -24,12 +24,17 @@
     font-family: 'Cairo', sans-serif;
 }
 
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--premium-dark);
     color: var(--white);
     direction: rtl;
     text-align: right;
-    overflow-x: hidden;
 }
 
 [v-cloak] {

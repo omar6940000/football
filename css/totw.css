@@ -28,12 +28,17 @@
     font-family: 'Cairo', sans-serif;
 }
 
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--premium-dark);
     color: var(--white);
     direction: rtl;
     text-align: right;
-    overflow-x: hidden;
 }
 
 [v-cloak] {
@@ -813,41 +818,143 @@ footer {
     }
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 768px) {
     .pitch-container {
         border-width: 3px;
         max-width: 100%;
     }
     
-    /* Scale player cards slightly on extremely small screens */
+    /* Responsive layout resizing to fit players comfortably */
     .pitch-player-card {
-        width: 55px;
-        height: 75px;
+        width: 60px;
+        height: 82px;
     }
     
     .mini-card-portrait {
-        width: 32px;
-        height: 32px;
+        width: 36px;
+        height: 36px;
         margin-top: 4px;
+    }
+    
+    .rating-badge-corner {
+        width: 16px;
+        height: 16px;
+        font-size: 0.65rem;
+    }
+    
+    .position-badge-corner {
+        font-size: 0.52rem;
+        padding: 0.5px 3.5px;
+    }
+    
+    .mini-card-name {
+        font-size: 0.62rem;
+    }
+    
+    .mini-card-title {
+        font-size: 0.48rem;
+    }
+
+    /* Modal cards styling optimization */
+    .totw-modal-overlay {
+        padding: 1rem;
+    }
+    .fifa-card {
+        width: 295px;
+        height: 445px;
+        padding: 1.8rem 1.5rem;
+    }
+    .player-overall-score {
+        font-size: 3.2rem;
+    }
+    .player-image-box {
+        width: 145px;
+        height: 145px;
+    }
+    .card-player-name {
+        font-size: 1.25rem;
+    }
+    .card-player-nickname {
+        font-size: 0.82rem;
+        padding: 0.25rem 1rem;
+    }
+    .card-player-meta {
+        font-size: 0.78rem;
+        padding: 0.5rem 0.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pitch-player-card {
+        width: 48px;
+        height: 68px;
+    }
+    
+    .mini-card-portrait {
+        width: 26px;
+        height: 26px;
+        margin-top: 2px;
     }
     
     .rating-badge-corner {
         width: 14px;
         height: 14px;
-        font-size: 0.58rem;
+        font-size: 0.55rem;
+        top: 2px;
+        right: 2px;
     }
     
     .position-badge-corner {
-        font-size: 0.48rem;
-        padding: 0.5px 3px;
+        font-size: 0.45rem;
+        padding: 0.5px 2px;
+        top: 2px;
+        left: 2px;
     }
     
     .mini-card-name {
-        font-size: 0.58rem;
+        font-size: 0.5rem;
     }
     
     .mini-card-title {
-        font-size: 0.45rem;
+        display: none; /* Hide position title text under 480px to save spacing */
+    }
+
+    /* Mini card tooltip adjustments for mobile touch */
+    .totw-tooltip {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.7rem;
+    }
+
+    /* Full-screen popup modal card adjustments */
+    .fifa-card {
+        width: 275px;
+        height: 415px;
+        padding: 1.5rem 1.25rem;
+    }
+    .player-overall-score {
+        font-size: 2.8rem;
+    }
+    .player-image-box {
+        width: 130px;
+        height: 130px;
+    }
+    .card-player-name {
+        font-size: 1.15rem;
+        margin-bottom: 0.5rem;
+    }
+    .card-player-nickname {
+        font-size: 0.78rem;
+        padding: 0.2rem 0.85rem;
+        margin-bottom: 0.65rem;
+    }
+    .card-player-meta {
+        font-size: 0.72rem;
+        border-radius: 12px;
+    }
+    .totw-modal-close-btn {
+        top: -45px;
+        width: 35px;
+        height: 35px;
     }
 }
 

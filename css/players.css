@@ -40,12 +40,17 @@
     font-family: 'Cairo', sans-serif;
 }
 
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--premium-dark);
     color: var(--white);
     direction: rtl;
     text-align: right;
-    overflow-x: hidden;
 }
 
 [v-cloak] {
@@ -868,6 +873,8 @@ footer {
     
     .search-card-wrapper {
         padding: 2rem 1.5rem;
+        width: 100%;
+        max-width: 100%;
     }
     
     .showcase-actions {
@@ -884,5 +891,71 @@ footer {
     
     .players-info-card {
         padding: 2rem 1.5rem;
+    }
+}
+
+/* Touch targets and Player Card auto scaling on mobile */
+@media (max-width: 768px) {
+    .form-control-custom {
+        padding: 1.25rem 1.5rem 1.25rem 3.5rem !important;
+        font-size: 1rem;
+        min-height: 48px; /* High tactile touch size */
+    }
+    .suggestion-item {
+        padding: 1.1rem 1.5rem; /* Min 48px vertical touch target */
+    }
+    .fifa-card {
+        width: 295px;
+        height: 445px;
+        padding: 1.8rem 1.5rem;
+    }
+    .player-overall-score {
+        font-size: 3.2rem;
+    }
+    .player-image-box {
+        width: 145px;
+        height: 145px;
+    }
+    .card-player-name {
+        font-size: 1.25rem;
+    }
+    .card-player-nickname {
+        font-size: 0.82rem;
+        padding: 0.25rem 1rem;
+    }
+    .card-player-meta {
+        font-size: 0.78rem;
+        padding: 0.5rem 0.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .fifa-card {
+        width: 275px;
+        height: 415px;
+        padding: 1.5rem 1.25rem;
+    }
+    .player-overall-score {
+        font-size: 2.8rem;
+    }
+    .player-image-box {
+        width: 130px;
+        height: 130px;
+    }
+    .card-player-name {
+        font-size: 1.15rem;
+        margin-bottom: 0.5rem;
+    }
+    .card-player-nickname {
+        font-size: 0.78rem;
+        padding: 0.2rem 0.85rem;
+        margin-bottom: 0.65rem;
+    }
+    .card-player-meta {
+        font-size: 0.72rem;
+        border-radius: 12px;
+    }
+    .search-card-wrapper {
+        padding: 1.5rem 1rem;
     }
 }
