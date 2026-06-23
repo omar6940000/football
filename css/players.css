@@ -1,0 +1,888 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap');
+
+:root {
+    --pitch-green: #2e7d32;
+    --pitch-green-glow: rgba(46, 125, 50, 0.4);
+    --pitch-green-dark: #1b5e20;
+    --premium-dark: #0a0f0d;
+    --premium-dark-card: #121a16;
+    --champions-gold: #ffd700;
+    --champions-gold-glow: rgba(255, 215, 0, 0.3);
+    --gold-gradient: linear-gradient(135deg, #ffd700, #bfa100);
+    --green-gradient: linear-gradient(135deg, #2e7d32, #1b5e20);
+    --white: #ffffff;
+    --gray-muted: #a0b2a6;
+    --border-color: rgba(46, 125, 50, 0.2);
+    --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    /* Card Theme Colors */
+    --theme-legendary-bg: linear-gradient(135deg, #ffd700 0%, #ffae00 50%, #b38600 100%);
+    --theme-legendary-glow: 0 0 35px rgba(255, 215, 0, 0.8), 0 0 15px rgba(255, 174, 0, 0.6);
+    
+    --theme-elite-bg: linear-gradient(135deg, #4a148c 0%, #311b92 50%, #000000 100%);
+    --theme-elite-glow: 0 0 30px rgba(106, 27, 154, 0.7), 0 0 15px rgba(49, 27, 146, 0.5);
+    
+    --theme-gold-bg: linear-gradient(135deg, #bfa100 0%, #8a6d00 50%, #121a16 100%);
+    --theme-gold-glow: 0 0 20px rgba(191, 161, 0, 0.4);
+    
+    --theme-silver-bg: linear-gradient(135deg, #cfd8dc 0%, #90a4ae 50%, #37474f 100%);
+    --theme-silver-glow: 0 0 20px rgba(144, 164, 174, 0.4);
+    
+    --theme-bronze-bg: linear-gradient(135deg, #8d6e63 0%, #5d4037 50%, #121a16 100%);
+    --theme-bronze-glow: 0 0 15px rgba(93, 64, 55, 0.3);
+}
+
+/* Base style resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+body {
+    background-color: var(--premium-dark);
+    color: var(--white);
+    direction: rtl;
+    text-align: right;
+    overflow-x: hidden;
+}
+
+[v-cloak] {
+    display: none !important;
+}
+
+/* Custom Scrollbar track */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--premium-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--pitch-green);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--champions-gold);
+}
+
+/* Navbar styles matching rest of the site */
+.navbar {
+    transition: var(--transition-smooth);
+    padding: 1.25rem 0;
+    border-bottom: 1px solid transparent;
+    z-index: 1000;
+}
+
+.navbar.navbar-scrolled {
+    background-color: rgba(10, 15, 13, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.75rem 0;
+}
+
+.nav-link {
+    color: var(--white) !important;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -5px;
+    right: 0;
+    background: var(--gold-gradient);
+    transition: var(--transition-smooth);
+    border-radius: 2px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--champions-gold) !important;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+}
+
+.logo-badge {
+    background: var(--green-gradient);
+    border: 2px solid var(--champions-gold);
+    border-radius: 12px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px var(--pitch-green-glow);
+}
+
+.btn-nav-call {
+    border: 2px solid var(--champions-gold);
+    color: var(--champions-gold) !important;
+    background: transparent;
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 700;
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-nav-call:hover {
+    background: var(--gold-gradient);
+    color: var(--premium-dark) !important;
+    box-shadow: 0 0 15px var(--champions-gold-glow);
+    transform: translateY(-2px);
+}
+
+/* Page Header */
+.players-header-section {
+    position: relative;
+    padding: 10rem 0 4rem 0;
+    background: linear-gradient(180deg, rgba(10, 15, 13, 0.65) 0%, rgba(10, 15, 13, 1) 100%), 
+                url('https://images.pexels.com/photos/19582958/pexels-photo-19582958.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=500&w=1920');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.header-badge {
+    background-color: rgba(46, 125, 50, 0.2);
+    border: 1px solid var(--pitch-green);
+    color: var(--champions-gold);
+    border-radius: 50px;
+    padding: 0.4rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.header-title {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.header-subtitle {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    color: var(--gray-muted);
+    max-width: 750px;
+    margin: 0 auto;
+    font-weight: 400;
+}
+
+/* Lookup Wrapper Grid */
+.lookup-section {
+    padding: 5rem 0;
+    position: relative;
+    min-height: 550px;
+}
+
+.lookup-section::before {
+    content: '';
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    background: var(--pitch-green-glow);
+    filter: blur(180px);
+    border-radius: 50%;
+    top: 10%;
+    right: 5%;
+    pointer-events: none;
+}
+
+/* Premium Search Form styling */
+.search-card-wrapper {
+    background: linear-gradient(145deg, rgba(18, 26, 22, 0.9) 0%, rgba(10, 15, 13, 0.9) 100%);
+    border: 2px solid var(--border-color);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    max-width: 650px;
+    margin: 0 auto;
+    transition: var(--transition-smooth);
+}
+
+.search-card-wrapper:hover {
+    border-color: var(--champions-gold);
+}
+
+.search-title-highlight {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-title-highlight svg {
+    color: var(--champions-gold);
+}
+
+.input-group-custom {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-control-custom {
+    background: rgba(18, 26, 22, 0.8) !important;
+    border: 2px solid var(--border-color) !important;
+    border-radius: 16px !important;
+    padding: 1.15rem 1.5rem 1.15rem 3.5rem !important;
+    color: var(--white) !important;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: var(--transition-smooth) !important;
+}
+
+.form-control-custom:focus {
+    border-color: var(--champions-gold) !important;
+    box-shadow: 0 0 15px var(--champions-gold-glow) !important;
+    outline: none;
+}
+
+.search-icon-inside {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray-muted);
+    pointer-events: none;
+    transition: var(--transition-smooth);
+}
+
+.form-control-custom:focus ~ .search-icon-inside {
+    color: var(--champions-gold);
+}
+
+.search-condition-badge {
+    background-color: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    color: var(--champions-gold);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+/* Elegant Suggestion Dropdown */
+.suggestion-dropdown {
+    background: rgba(18, 26, 22, 0.98);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--champions-gold);
+    border-radius: 16px;
+    position: absolute;
+    width: 100%;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 100;
+    max-height: 250px;
+    overflow-y: auto;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+}
+
+.suggestion-item {
+    padding: 1rem 1.5rem;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(46, 125, 50, 0.1);
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestion-item:hover {
+    background: var(--green-gradient);
+    padding-right: 2rem;
+}
+
+.suggestion-item-pos {
+    background: var(--champions-gold);
+    color: var(--premium-dark);
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 2px 10px;
+    border-radius: 50px;
+}
+
+/* Full Screen Showcase container (Fade state triggers) */
+.showcase-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) rotateY(-5deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg);
+    }
+}
+
+/* FIFA Premium Esports Card Layout */
+.fifa-card-container {
+    perspective: 1200px;
+    margin-bottom: 2.5rem;
+    cursor: pointer;
+}
+
+.fifa-card {
+    width: 325px;
+    height: 490px;
+    border-radius: 30px;
+    position: relative;
+    padding: 2.5rem 2rem;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    z-index: 5;
+    border: 3px solid transparent;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+/* 3D hover tilting effect */
+.fifa-card-container:hover .fifa-card {
+    transform: rotateX(8deg) rotateY(-8deg) translateY(-8px) scale(1.04);
+}
+
+/* Futuristic Tech Carbon grid and light flare overlays for background */
+.fifa-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 3px),
+        repeating-linear-gradient(90deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 3px),
+        linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.06) 48%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.06) 52%, transparent 60%);
+    background-size: 6px 6px, 6px 6px, 200% 200%;
+    background-position: 0 0, 0 0, 0 0;
+    transition: background-position 0.8s ease;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.fifa-card-container:hover .fifa-card::after {
+    background-position: 0 0, 0 0, 100% 100%;
+}
+
+/* Glass/Crystal Shimmer overlay */
+.fifa-card-shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.15) 40%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.15) 60%, transparent 70%);
+    background-size: 300% 100%;
+    z-index: 2;
+    pointer-events: none;
+    transition: background-position 0.6s ease;
+}
+
+.fifa-card-container:hover .fifa-card-shimmer {
+    background-position: 100% 0;
+}
+
+/* Tier 1: Legendary (Rating 90+) -> Radiant Mythic Gold theme */
+.fifa-card.rating-legendary {
+    background: linear-gradient(135deg, #100d00 0%, #1e1601 35%, #473200 70%, #b38600 100%);
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.65), 0 0 15px rgba(255, 174, 0, 0.4), inset 0 0 25px rgba(255, 215, 0, 0.3);
+    border-color: #ffd700;
+    animation: legendaryFlash 3s infinite alternate;
+}
+
+@keyframes legendaryFlash {
+    0% {
+        border-color: #ffd700;
+        box-shadow: 0 0 35px rgba(255, 215, 0, 0.5), inset 0 0 20px rgba(255, 215, 0, 0.2);
+    }
+    100% {
+        border-color: #ffffff;
+        box-shadow: 0 0 50px rgba(255, 215, 0, 0.85), inset 0 0 35px rgba(255, 174, 0, 0.4);
+    }
+}
+
+/* Tier 2: Elite (Rating 85-89) -> TOTW Purple theme */
+.fifa-card.rating-elite {
+    background: linear-gradient(135deg, #070014 0%, #15002a 35%, #2e0854 70%, #5e0d9b 100%);
+    box-shadow: 0 0 35px rgba(138, 43, 226, 0.6), 0 0 15px rgba(106, 27, 154, 0.4), inset 0 0 20px rgba(138, 43, 226, 0.3);
+    border-color: #da70d6;
+}
+
+/* Tier 3: Rare Gold (Rating 80-84) -> Champions Gold theme */
+.fifa-card.rating-gold {
+    background: linear-gradient(135deg, #0f0b00 0%, #1a1200 45%, #3a2800 80%, #8a6d00 100%);
+    box-shadow: 0 0 25px rgba(191, 161, 0, 0.55), inset 0 0 15px rgba(191, 161, 0, 0.25);
+    border-color: #bfa100;
+}
+
+/* Tier 4: Silver (Rating 70-79) -> Sleek Metallic Silver theme */
+.fifa-card.rating-silver {
+    background: linear-gradient(135deg, #0e1112 0%, #1c2124 45%, #3c454a 80%, #707d84 100%);
+    box-shadow: 0 0 25px rgba(144, 164, 174, 0.45), inset 0 0 15px rgba(144, 164, 174, 0.2);
+    border-color: #b0bec5;
+}
+
+/* Tier 5: Bronze (Rating <70) -> Modern Copper/Bronze theme */
+.fifa-card.rating-bronze {
+    background: linear-gradient(135deg, #0c0705 0%, #17100e 45%, #2d1d1a 80%, #5d4037 100%);
+    box-shadow: 0 0 20px rgba(93, 64, 55, 0.35), inset 0 0 12px rgba(93, 64, 55, 0.15);
+    border-color: #8d6e63;
+}
+
+/* Glassmorphism Header Stat block in the Corner (preserves 3D depth) */
+.card-header-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 2rem;
+    right: 1.8rem;
+    z-index: 10;
+    transform: translateZ(30px);
+}
+
+.player-overall-score {
+    font-size: 3.8rem;
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -3px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    color: var(--white);
+}
+
+/* Glassmorphic Position tag */
+.player-position-tag {
+    font-size: 0.85rem;
+    font-weight: 800;
+    background: rgba(10, 15, 13, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 3px 14px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--champions-gold);
+    text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+}
+
+/* Portrait container with custom pulsing theme borders */
+.player-image-box {
+    width: 175px;
+    height: 175px;
+    margin: 1rem auto 0 auto;
+    position: relative;
+    border-radius: 50%;
+    z-index: 4;
+    transform: translateZ(25px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Glowing Dynamic Ring Border matching the theme */
+.player-image-box::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, var(--champions-gold), transparent 60%, var(--champions-gold));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    transition: var(--transition-smooth);
+    animation: ringRotate 6s linear infinite;
+}
+
+@keyframes ringRotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.rating-legendary .player-image-box::before {
+    background: linear-gradient(135deg, #ffd700, transparent 40%, #ffae00, transparent 80%, #ffffff);
+}
+
+.rating-elite .player-image-box::before {
+    background: linear-gradient(135deg, #da70d6, transparent 40%, #8a43e2, transparent 80%, #ba55d3);
+}
+
+.rating-gold .player-image-box::before {
+    background: linear-gradient(135deg, #bfa100, transparent 50%, #8a6d00);
+}
+
+.rating-silver .player-image-box::before {
+    background: linear-gradient(135deg, #b0bec5, transparent 50%, #90a4ae);
+}
+
+.rating-bronze .player-image-box::before {
+    background: linear-gradient(135deg, #8d6e63, transparent 50%, #5d4037);
+}
+
+.player-card-avatar {
+    width: 93%;
+    height: 93%;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+    background-color: rgba(10, 15, 13, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Card details container */
+.player-card-details {
+    text-align: center;
+    margin-top: 1.25rem;
+    z-index: 10;
+    transform: translateZ(40px);
+}
+
+/* Nickname Pill-capsule with glassmorphism and neon typography */
+.card-player-nickname {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--white);
+    background: rgba(10, 15, 13, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 215, 0, 0.35);
+    border-radius: 50px;
+    padding: 0.35rem 1.4rem;
+    display: inline-block;
+    margin-bottom: 0.85rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    transition: var(--transition-smooth);
+}
+
+.rating-legendary .card-player-nickname {
+    color: #ffd700;
+    border-color: #ffd700;
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
+}
+
+.rating-elite .card-player-nickname {
+    color: #e0b0ff;
+    border-color: #da70d6;
+    text-shadow: 0 0 12px rgba(218, 112, 214, 0.7);
+}
+
+.rating-gold .card-player-nickname {
+    color: #ffe680;
+    border-color: #bfa100;
+}
+
+.rating-silver .card-player-nickname {
+    color: #e0e0e0;
+    border-color: #b0bec5;
+}
+
+.rating-bronze .card-player-nickname {
+    color: #d7ccc8;
+    border-color: #8d6e63;
+}
+
+.card-player-name {
+    font-size: 1.45rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 0.85rem;
+    color: var(--white);
+    text-shadow: 0 3px 10px rgba(0,0,0,0.8);
+}
+
+/* Glassmorphism Stats Container at the bottom */
+.card-player-meta {
+    font-size: 0.82rem;
+    color: var(--white);
+    font-weight: 700;
+    background: rgba(10, 15, 13, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 0.65rem 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.card-meta-item {
+    flex: 1;
+    text-align: center;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.card-meta-item:last-child {
+    border-left: none;
+}
+
+.card-meta-item strong {
+    color: var(--champions-gold);
+    display: block;
+    font-size: 0.7rem;
+    opacity: 0.9;
+    margin-bottom: 2px;
+}
+
+.rating-legendary .card-meta-item strong {
+    color: #ffd700;
+}
+
+.rating-elite .card-meta-item strong {
+    color: #da70d6;
+}
+
+.rating-gold .card-meta-item strong {
+    color: #bfa100;
+}
+
+.rating-silver .card-meta-item strong {
+    color: #b0bec5;
+}
+
+.rating-bronze .card-meta-item strong {
+    color: #a1887f;
+}
+
+/* Reset / Back Button & CTA triggers */
+.showcase-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    width: 100%;
+    max-width: 480px;
+}
+
+.btn-back-search {
+    background: rgba(18, 26, 22, 0.8);
+    border: 2px solid var(--border-color);
+    color: var(--white);
+    padding: 0.85rem 1.75rem;
+    border-radius: 50px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.btn-back-search:hover {
+    border-color: var(--champions-gold);
+    background-color: rgba(46, 125, 50, 0.15);
+    color: var(--white);
+}
+
+.btn-card-whatsapp {
+    background: var(--green-gradient);
+    color: var(--white);
+    border: 2px solid var(--champions-gold);
+    border-radius: 50px;
+    padding: 0.85rem 1.75rem;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.btn-card-whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px var(--pitch-green-glow);
+    color: var(--white);
+}
+
+/* Single pitch info highlighted panel specifically for cards search page */
+.players-info-banner {
+    padding: 5rem 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    background: linear-gradient(180deg, var(--premium-dark) 0%, rgba(12, 20, 16, 1) 50%, var(--premium-dark) 100%);
+}
+
+.players-info-card {
+    background: rgba(18, 26, 22, 0.55);
+    border: 2px solid var(--border-color);
+    border-radius: 24px;
+    padding: 3rem;
+    text-align: center;
+}
+
+.players-info-card:hover {
+    border-color: var(--champions-gold);
+}
+
+.info-icon-box {
+    width: 60px;
+    height: 60px;
+    background: var(--green-gradient);
+    border: 2px solid var(--champions-gold);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    margin: 0 auto 1.5rem auto;
+    box-shadow: 0 0 15px var(--pitch-green-glow);
+}
+
+/* Footer styles identical to Home, Coaches & Gallery */
+footer {
+    background-color: #050706;
+    border-top: 1px solid rgba(46, 125, 50, 0.15);
+    padding: 4rem 0 2rem 0;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 900;
+    font-size: 1.8rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.footer-desc {
+    color: var(--gray-muted);
+    max-width: 500px;
+    margin: 0 auto 2.5rem auto;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.footer-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 3rem;
+}
+
+.social-link {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: rgba(18, 26, 22, 1);
+    border: 1px solid var(--border-color);
+    color: var(--gray-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+    text-decoration: none;
+}
+
+.social-link:hover {
+    color: var(--champions-gold);
+    border-color: var(--champions-gold);
+    background-color: rgba(46, 125, 50, 0.1);
+    transform: translateY(-4px);
+}
+
+.footer-copyright {
+    border-top: 1px solid rgba(46, 125, 50, 0.1);
+    padding-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--gray-muted);
+}
+
+/* Responsive constraints */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: rgba(10, 15, 13, 0.98);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-top: 1rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    .nav-link {
+        padding: 0.75rem 0;
+        text-align: center;
+    }
+    
+    .nav-link::after {
+        display: none;
+    }
+    
+    .btn-nav-call {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    
+    .search-card-wrapper {
+        padding: 2rem 1.5rem;
+    }
+    
+    .showcase-actions {
+        flex-direction: column-reverse;
+        width: 100%;
+        gap: 10px;
+    }
+    
+    .btn-back-search,
+    .btn-card-whatsapp {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .players-info-card {
+        padding: 2rem 1.5rem;
+    }
+}

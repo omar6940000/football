@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استعلام بطاقات اللاعبين | أكاديمية الفرسان الكروية</title>
+    
+    <!-- Meta tags for SEO & Sports Academy Players Card Lookup Theme -->
+    <meta name="description" content="تصفح واستعلم عن بطاقات وتقييمات أبطال أكاديمية الفرسان الكروية. نظام تقييم فني متكامل للفئات السنية من مواليد 2016 حتى 2009.">
+    <meta name="keywords" content="بطاقات لاعبين كرة قدم, تقييمات براعم, أكاديمية كرة قدم الرياض, استعلام لاعبين, فيفا كارد براعم">
+    
+    <!-- Bootstrap 5 RTL CDN for responsive layout -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+    
+    <!-- AOS CSS CDN for Smooth Animate-On-Scroll -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    
+    <!-- Custom separated styles -->
+    <link rel="stylesheet" href="css/players.css">
+</head>
+<body>
+
+    <!-- Vue App root container -->
+    <div id="app" v-cloak>
+
+        <!-- Navbar Section (Identical cross-page consistency) -->
+        <nav class="navbar navbar-expand-lg fixed-top" :class="{'navbar-scrolled': isScrolled}">
+            <div class="container">
+                <!-- Premium Sports Logo -->
+                <a class="navbar-brand text-white" href="index.html">
+                    <div class="logo-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--champions-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            <path d="M2 12h20"></path>
+                        </svg>
+                    </div>
+                    <span>{{ config.academyName }}</span>
+                </a>
+
+                <!-- Toggler -->
+                <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+
+                <!-- Navigation links -->
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">الرئيسية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#features">مميزاتنا</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#schedule">فئات التدريب</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="coaches.html">طاقمنا الفني</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gallery.html">ألبوم الصور</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="players.html">بطاقات اللاعبين</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="totw.html">تشكيلة الأسبوع</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#location">الموقع والاتصال</a>
+                        </li>
+                    </ul>
+                    
+                    <!-- Direct call-to-action dialing button -->
+                    <div class="text-center">
+                        <a :href="getPhoneCallLink()" class="btn-nav-call">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>اتصل الآن</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Header / Cards Hero Section -->
+        <header class="players-header-section">
+            <div class="container">
+                <span class="header-badge" data-aos="fade-down">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    لوحة شرف فرسان المستقبل الكروي
+                </span>
+                <h1 class="header-title text-white" data-aos="fade-up" data-aos-delay="150">
+                    استعلام واستعراض بطاقات الأبطال ⭐️
+                </h1>
+                <p class="header-subtitle" data-aos="fade-up" data-aos-delay="300">
+                    نقدم نظام تقييم رياضي وتحفيزي مبتكر للفئات السنية. أدخل اسم طفلك الثلاثي أو الرباعي لمشاهدة بطاقته الفنية المتكاملة المستوحاة من تصاميم بطاقات الفيفا العالمية.
+                </p>
+            </div>
+        </header>
+
+        <!-- Main Search & Showcase Lookup Section -->
+        <section class="lookup-section">
+            <div class="container">
+                
+                <!-- STATE 1: Search Input (isSearching = true) -->
+                <div class="search-container-box" v-if="isSearching" data-aos="fade-up">
+                    <div class="search-card-wrapper">
+                        <h2 class="search-title-highlight">
+                            <!-- Search Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <span>ابحث عن بطاقة البطل التدريبية</span>
+                        </h2>
+                        
+                        <p class="text-gray-muted mb-4 fs-6">
+                            حرصاً على الخصوصية الكاملة لأبطال الأكاديمية وسرية بياناتهم، يجب عليك كتابة <strong>ثلاثة أسماء على الأقل</strong> من اسم اللاعب (مثل: "عمر محمد ناصر") لإظهار قائمة الاقتراحات المتاحة للاختيار والمشاهدة.
+                        </p>
+
+                        <!-- Input field -->
+                        <div class="input-group-custom">
+                            <input type="text" 
+                                   v-model="searchQuery" 
+                                   class="form-control form-control-custom" 
+                                   placeholder="اكتب الاسم الثلاثي أو الرباعي للاعب هنا..."
+                                   autocomplete="off">
+                            <span class="search-icon-inside">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </span>
+
+                            <!-- Elegant Dropdown Suggestions list -->
+                            <ul class="suggestion-dropdown" v-if="isQueryValidForSuggestions && suggestions.length > 0">
+                                <li class="suggestion-item" 
+                                    v-for="player in suggestions" 
+                                    :key="player.id" 
+                                    @click="selectPlayer(player)">
+                                    <span>{{ player.fullName }}</span>
+                                    <span class="suggestion-item-pos">{{ player.position }}</span>
+                                </li>
+                            </ul>
+                            
+                            <!-- No Results Notification when query has 3 names but no matches -->
+                            <ul class="suggestion-dropdown" v-else-if="isQueryValidForSuggestions && suggestions.length === 0">
+                                <li class="suggestion-item text-danger justify-content-center fw-bold fs-6">
+                                    عذراً، لم نجد لاعب بهذا الاسم حالياً. يرجى مراجعة الكابتن للتأكد من تسجيله في لوحة الشرف.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Info instruction badge -->
+                        <div class="search-condition-badge">
+                            <!-- Info SVG -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            </svg>
+                            <span>الشرط الحالي: ابدأ بكتابة 3 أسماء على الأقل لتفعيل محرك البحث الذكي.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STATE 2: Full Screen Card Showcase (isSearching = false) -->
+                <div class="showcase-container" v-else>
+                    
+                    <!-- FIFA Card Dynamic Styling -->
+                    <div class="fifa-card-container">
+                        <div class="fifa-card" :class="getRatingThemeClass(selectedPlayer.rating)">
+                            <!-- Shiny glass layer -->
+                            <div class="fifa-card-shimmer"></div>
+                            
+                            <!-- Card Rating & Position Badge -->
+                            <div class="card-header-stats">
+                                <span class="player-overall-score">{{ selectedPlayer.rating }}</span>
+                                <span class="player-position-tag">{{ selectedPlayer.position.split(' ')[0] }}</span>
+                            </div>
+
+                            <!-- Cropped Profile Image Box -->
+                            <div class="player-image-box">
+                                <img :src="selectedPlayer.image" :alt="selectedPlayer.fullName" class="player-card-avatar">
+                            </div>
+
+                            <!-- Player Details -->
+                            <div class="player-card-details">
+                                <span class="card-player-nickname d-inline-block">{{ selectedPlayer.title }}</span>
+                                <h3 class="card-player-name text-white">{{ selectedPlayer.fullName }}</h3>
+                                
+                                <!-- Meta stats grid -->
+                                <div class="card-player-meta">
+                                    <div class="card-meta-item">
+                                        <strong>سنة الميلاد</strong>
+                                        <span>{{ selectedPlayer.birthYear }}</span>
+                                    </div>
+                                    <div class="card-meta-item">
+                                        <strong>التصنيف الفني</strong>
+                                        <span>{{ selectedPlayer.rating }}</span>
+                                    </div>
+                                    <div class="card-meta-item">
+                                        <strong>الصفة</strong>
+                                        <span>أساسي</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Informational description showing their current classification -->
+                    <p class="text-gold fw-bold text-center mb-4 fs-5">
+                        {{ getRatingThemeLabel(selectedPlayer.rating) }}
+                    </p>
+
+                    <!-- Reset & WhatsApp Call-To-Action buttons -->
+                    <div class="showcase-actions">
+                        <!-- Reset to search -->
+                        <button class="btn-back-search" @click="resetSearch">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="19" y1="12" x2="5" y2="12"></line>
+                                <polyline points="12 19 5 12 12 5"></polyline>
+                            </svg>
+                            <span>عودة للبحث والاسم الثلاثي</span>
+                        </button>
+
+                        <!-- Share / Inquire on WhatsApp -->
+                        <a :href="getWhatsAppLink(selectedPlayer.whatsappText)" class="btn-card-whatsapp">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12.004 0C5.378 0 0 5.38 0 12.004c0 2.112.547 4.16 1.587 5.964L.057 24l6.156-1.619c1.756.955 3.736 1.459 5.79 1.464 6.626 0 12.004-5.38 12.004-12.004C24.008 5.38 18.63 0 12.004 0zm0 22.008c-1.895 0-3.754-.51-5.394-1.47l-.387-.23-3.666.962.98-3.57-.253-.402c-1.054-1.68-1.611-3.635-1.611-5.694.004-5.52 4.49-10.007 10.01-10.007 2.67 0 5.18 1.04 7.07 2.93a9.922 9.922 0 0 1 2.93 7.077c-.004 5.52-4.49 10.004-10.01 10.004z"/>
+                            </svg>
+                            <span>استفسر عن البطل عبر واتساب</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Static Banner about our single pitch setup and security -->
+        <section class="players-info-banner">
+            <div class="container" data-aos="fade-up">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="players-info-card">
+                            <div class="info-icon-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                    <path d="M2 12h20"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-white fw-bold mb-3">بيئة تقييم فني آمنة ومدروسة 🔒</h3>
+                            <p class="text-gray-muted fs-5 mb-4 leading-lg">
+                                نوفر في أكاديمية الفرسان لوحة تقييم رياضية سلوكية وفنية ذكية على ملعبنا الفردي الآمن. يتم تصنيف اللاعبين ووضع بطاقات تحفيزية مميزة بناءً على معايير اللياقة، دقة التمرير، الأخلاق الرياضية، والالتزام بحضور الحصص التدريبية.
+                            </p>
+                            <a :href="getPhoneCallLink()" class="btn-nav-call">
+                                <span>تواصل تلفونياً للاستفسار عن لوحة الشرف</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container text-center">
+                <!-- Footer logo badge -->
+                <div class="footer-logo text-white">
+                    <div class="logo-badge mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--champions-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            <path d="M2 12h20"></path>
+                        </svg>
+                    </div>
+                    <span class="d-block mt-2">{{ config.academyName }}</span>
+                </div>
+                
+                <p class="footer-desc">
+                    نهتم بالتطوير الحقيقي ونؤمن بأن تأسيس الفئة السنية من الصغر في بيئة آمنة ومحمية هو حجر الأساس لبناء لاعب ذكي قادر على المنافسة والابتكار. ملعبنا الفردي الآمن تحت تصرف طفلك ومجموعته فقط.
+                </p>
+
+                <!-- SVG Social Icons links -->
+                <div class="footer-social-links">
+                    <!-- Instagram -->
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    
+                    <!-- Twitter/X -->
+                    <a href="#" class="social-link" aria-label="X">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    
+                    <!-- YouTube -->
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Copyright -->
+                <div class="footer-copyright">
+                    <p class="m-0">&copy; 2026 {{ config.academyName }} - جميع الحقوق محفوظة. تم تدشين بوابة استعلام اللاعبين.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Vue 3 CDN (Global API) -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Bootstrap 5 Bundle JS CDN (including Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS JS CDN for scroll animations -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- Separation of concerns - Vue engine & standard initializations -->
+    <script src="js/players.js"></script>
+</body>
+</html>

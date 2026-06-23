@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ألبوم الصور | أكاديمية الفرسان الكروية</title>
+    
+    <!-- Meta tags for SEO & Sports Academy Gallery Theme -->
+    <meta name="description" content="تصفح ألبوم صور أكاديمية الفرسان الكروية. شاهد تدريبات أبطالنا الصغار، أيام المباريات، الروح الجماعية والاحتفالات على ملعبنا التدريبي الآمن والمجهز كلياً.">
+    <meta name="keywords" content="صور تدريب أطفال كرة قدم, معرض صور أكاديمية كرة قدم, براعم الفرسان, ملعب النخبة الرياض, تدريبات فئات سنية">
+    
+    <!-- Bootstrap 5 RTL CDN for responsive layout -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+    
+    <!-- AOS CSS CDN for Smooth Animate-On-Scroll -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    
+    <!-- Fancybox CSS CDN for Premium Full-Screen Image Modal Previews -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+    
+    <!-- Custom Styles separated -->
+    <link rel="stylesheet" href="css/gallery.css">
+</head>
+<body>
+
+    <!-- Vue App root container -->
+    <div id="app" v-cloak>
+
+        <!-- Navbar Section (Identical to Home & Coaches page for seamless layout consistency) -->
+        <nav class="navbar navbar-expand-lg fixed-top" :class="{'navbar-scrolled': isScrolled}">
+            <div class="container">
+                <!-- Premium Sports Logo -->
+                <a class="navbar-brand text-white" href="index.html">
+                    <div class="logo-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--champions-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            <path d="M2 12h20"></path>
+                        </svg>
+                    </div>
+                    <span>{{ config.academyName }}</span>
+                </a>
+
+                <!-- Toggler -->
+                <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+
+                <!-- Navigation links -->
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">الرئيسية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#features">مميزاتنا</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#schedule">فئات التدريب</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="coaches.html">طاقمنا الفني</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="gallery.html">ألبوم الصور</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="players.html">بطاقات اللاعبين</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="totw.html">تشكيلة الأسبوع</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#location">الموقع والاتصال</a>
+                        </li>
+                    </ul>
+                    
+                    <!-- Direct Phone Dialer -->
+                    <div class="text-center">
+                        <a :href="getPhoneCallLink()" class="btn-nav-call">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>اتصل الآن</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Header / Gallery Hero Section -->
+        <header class="gallery-header-section">
+            <div class="container">
+                <span class="header-badge" data-aos="fade-down">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                        <circle cx="12" cy="13" r="4"></circle>
+                    </svg>
+                    ألبوم الفرسان الرقمي
+                </span>
+                <h1 class="header-title text-white" data-aos="fade-up" data-aos-delay="150">
+                    لحظات بناء أبطال المستقبل 📸
+                </h1>
+                <p class="header-subtitle" data-aos="fade-up" data-aos-delay="300">
+                    نوثق رحلة نمو وتأسيس أبطالنا الصغار خطوة بخطوة. شاهد تدريبات الرشاقة والتحكم والتنافس الشريف في ملعبنا الرئيسي المغلق.
+                </p>
+            </div>
+        </header>
+
+        <!-- Filter Tabs Section (Vue.js Powered) -->
+        <section class="gallery-filter-section text-center">
+            <div class="container" data-aos="fade-up">
+                <div class="d-flex flex-wrap justify-content-center">
+                    <button v-for="cat in filterCategories" 
+                            :key="cat.id" 
+                            @click="setCategory(cat.id)" 
+                            class="filter-btn" 
+                            :class="{'active': currentCategory === cat.id}">
+                        {{ cat.name }}
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Grid Layout with Fancybox integration -->
+        <section class="gallery-grid-section">
+            <div class="container">
+                <div class="row g-4">
+                    <!-- Dynamic rendering computed array of photos -->
+                    <div class="col-lg-4 col-md-6" 
+                         v-for="(photo, index) in filteredPhotos" 
+                         :key="photo.id" 
+                         data-aos="fade-up" 
+                         :data-aos-delay="(index % 3) * 150">
+                        <!-- Fancybox Anchor Wrapper -->
+                        <a :href="photo.image" 
+                           data-fancybox="gallery" 
+                           :data-caption="`<strong>${photo.title}</strong><br>${photo.desc}`"
+                           class="text-decoration-none">
+                            <div class="gallery-card">
+                                <img :src="photo.image" :alt="photo.title" class="gallery-img" loading="lazy">
+                                
+                                <!-- Hover glassmorphic details overlay with zooming icon -->
+                                <div class="gallery-overlay">
+                                    <div class="zoom-icon-box">
+                                        <!-- Search/Zoom Inline SVG -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                            <line x1="11" y1="8" x2="11" y2="14"></line>
+                                            <line x1="8" y1="11" x2="14" y2="11"></line>
+                                        </svg>
+                                    </div>
+                                    <h3 class="gallery-photo-title">{{ photo.title }}</h3>
+                                    <span class="gallery-photo-category">اضغط للتكبير والمشاهدة</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gilded Pitch Highlight Call-To-Action panel -->
+        <section class="pitch-photo-cta-banner text-center">
+            <div class="container" data-aos="fade-up">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="photo-cta-card">
+                            <div class="photo-cta-icon-box">
+                                <!-- Soccer tactics pitch outline SVG -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                            </div>
+                            <h2 class="text-white fw-bold mb-3">هل ترغب في أن يتدرب ابنك في هذه البيئة الاحترافية؟ ⚽</h2>
+                            <p class="text-gray-muted fs-5 mb-4">
+                                نقوم بتصوير وتوثيق تطور كل مشترك وتقديم إرشادات بصرية لمساعدة أولياء الأمور واللاعبين على استكشاف التطور البدني. لا تتردد في حجز التقييم الفردي المجاني لطفلك الآن.
+                            </p>
+                            <a :href="getWhatsAppLink()" class="btn-gallery-whatsapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.731-1.456L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.588 1.977 14.113.953 11.5.953c-5.438 0-9.863 4.371-9.867 9.8.001 2.128.561 4.204 1.624 6.012l-1.066 3.893 3.996-1.047zM16.521 13.51c-.27-.135-1.602-.791-1.85-.882-.249-.09-.43-.135-.611.135-.18.27-.7.882-.857 1.062-.158.18-.315.202-.586.067-.27-.135-1.143-.421-2.18-1.347-.806-.717-1.35-1.604-1.508-1.875-.158-.271-.017-.417.118-.552.122-.121.27-.315.405-.472.135-.158.18-.27.27-.45.09-.18.045-.337-.022-.472-.068-.135-.611-1.472-.838-2.016-.22-.53-.442-.458-.611-.466-.158-.007-.339-.007-.52-.007-.18 0-.474.067-.722.337-.249.271-.95.928-.95 2.264s.973 2.63 1.108 2.81c.135.18 1.914 2.922 4.637 4.101.648.28 1.153.448 1.546.573.651.207 1.243.177 1.71.107.521-.078 1.602-.656 1.828-1.287.226-.63.226-1.17.158-1.282-.068-.113-.249-.18-.52-.315z"/>
+                                </svg>
+                                <span>احجز التقييم الفني المجاني لابنك الآن</span>
+                            </a >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container text-center">
+                <!-- Footer logo badge -->
+                <div class="footer-logo text-white">
+                    <div class="logo-badge mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--champions-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            <path d="M2 12h20"></path>
+                        </svg>
+                    </div>
+                    <span class="d-block mt-2">{{ config.academyName }}</span>
+                </div>
+                
+                <p class="footer-desc">
+                    نهتم بالتطوير الحقيقي ونؤمن بأن تأسيس الفئة السنية من الصغر في بيئة آمنة ومحمية هو حجر الأساس لبناء لاعب ذكي قادر على المنافسة والابتكار. ملعبنا الفردي الآمن تحت تصرف طفلك ومجموعته فقط.
+                </p>
+
+                <!-- SVG Social Icons links -->
+                <div class="footer-social-links">
+                    <!-- Instagram -->
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    
+                    <!-- Twitter/X -->
+                    <a href="#" class="social-link" aria-label="X">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    
+                    <!-- YouTube -->
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Copyright -->
+                <div class="footer-copyright">
+                    <p class="m-0">&copy; 2026 {{ config.academyName }} - جميع الحقوق محفوظة. لقطات حية وتوثيق مستمر للأبطال.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Vue 3 CDN (Global API) -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Bootstrap 5 Bundle JS CDN (including Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS JS CDN for scroll animations -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- Fancybox JS CDN for smooth full-screen modal previews with swipes -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+    <!-- Separation of concerns - Vue engine & standard initializations -->
+    <script src="js/gallery.js"></script>
+</body>
+</html>

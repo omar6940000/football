@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الطاقم الفني والتدريبي | أكاديمية الفرسان الكروية</title>
+    
+    <!-- Meta tags for SEO & Sports Academy Theme -->
+    <meta name="description" content="تعرّف على الطاقم التدريبي والخبراء الفنيين لأكاديمية الفرسان الكروية. مدربين حاصلين على رخص تدريب آسيوية معتمدة ومتخصصين في تأسيس الفئات السنية وتطوير المواهب.">
+    <meta name="keywords" content="مدربي كرة قدم, طاقم تدريبي, أكاديمية براعم, الكابتن أحمد الرويلي, رخص تدريب آسيوية, تدريب حراس مرمى الرياض">
+    
+    <!-- Bootstrap 5 RTL CDN for responsive layout -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+    
+    <!-- AOS CSS CDN for Smooth Animate-On-Scroll -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    
+    <!-- Custom Styles separated -->
+    <link rel="stylesheet" href="css/coaches.css">
+</head>
+<body>
+
+    <!-- Vue App root container -->
+    <div id="app" v-cloak>
+
+        <!-- Navbar Section (Identical to Home page for seamless experience) -->
+        <nav class="navbar navbar-expand-lg fixed-top" :class="{'navbar-scrolled': isScrolled}">
+            <div class="container">
+                <!-- Premium Sports Logo -->
+                <a class="navbar-brand text-white" href="index.html">
+                    <div class="logo-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--champions-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            <path d="M2 12h20"></path>
+                        </svg>
+                    </div>
+                    <span>{{ config.academyName }}</span>
+                </a>
+
+                <!-- Toggler -->
+                <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+
+                <!-- Navigation links -->
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">الرئيسية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#features">مميزاتنا</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#schedule">فئات التدريب</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="coaches.html">طاقمنا الفني</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gallery.html">ألبوم الصور</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="players.html">بطاقات اللاعبين</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="totw.html">تشكيلة الأسبوع</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#location">الموقع والاتصال</a>
+                        </li>
+                    </ul>
+                    
+                    <!-- Direct Dialer button -->
+                    <div class="text-center">
+                        <a :href="getPhoneCallLink()" class="btn-nav-call">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>اتصل الآن</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Compact Page Header / Subpage Hero with dark overlay -->
+        <header class="coaches-header-section">
+            <div class="container">
+                <span class="header-badge" data-aos="fade-down">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    طاقم تدريبي احترافي مرخص
+                </span>
+                <h1 class="header-title text-white" data-aos="fade-up" data-aos-delay="150">
+                    خبراء التأسيس الرياضي للفئات السنية
+                </h1>
+                <p class="header-subtitle" data-aos="fade-up" data-aos-delay="300">
+                    نجمع لكم أفضل الخبراء الأكاديميين الحاصلين على رخص آسيوية معتمدة، لبناء أساس مهاري وسلوكي متين لأطفالكم على ملعبنا التدريبي الآمن والمجهز كلياً.
+                </p>
+            </div>
+        </header>
+
+        <!-- Filter Controls Section -->
+        <section class="coaches-filter-section text-center">
+            <div class="container" data-aos="fade-up">
+                <div class="d-flex flex-wrap justify-content-center">
+                    <button v-for="cat in filterCategories" 
+                            :key="cat.id" 
+                            @click="setFilter(cat.id)" 
+                            class="filter-btn" 
+                            :class="{'active': currentFilter === cat.id}">
+                        {{ cat.name }}
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coaches Grid Section -->
+        <section class="coaches-grid-section">
+            <div class="container">
+                <div class="row g-4 justify-content-center">
+                    <!-- Render dynamic computed list of coaches with animation delay based on index -->
+                    <div class="col-lg-4 col-md-6" 
+                         v-for="(coach, index) in filteredCoaches" 
+                         :key="coach.id" 
+                         data-aos="fade-up" 
+                         :data-aos-delay="index * 150">
+                        <div class="coach-card">
+                            <div>
+                                <!-- Image wrapper with hover scale & badge overlays -->
+                                <div class="coach-image-wrapper">
+                                    <img :src="coach.image" :alt="coach.name" class="coach-card-img">
+                                    <!-- Badges -->
+                                    <span class="experience-badge">{{ coach.experience }}</span>
+                                    <span class="availability-badge">{{ coach.availability }}</span>
+                                </div>
+
+                                <!-- Card text content -->
+                                <div class="coach-body">
+                                    <span class="coach-role-title d-block">{{ coach.role }}</span>
+                                    <h3 class="coach-name">{{ coach.name }}</h3>
+
+                                    <!-- Age group specialty badges -->
+                                    <div class="coach-specialty-container">
+                                        <span class="specialty-badge" v-for="(spec, sIdx) in coach.specialties" :key="sIdx">
+                                            <!-- Soccer ball specialty outline SVG -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10"></circle>
+                                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                            </svg>
+                                            {{ spec }}
+                                        </span>
+                                    </div>
+
+                                    <!-- Credentials list -->
+                                    <h4 class="certifications-title">الشهادات والاعتمادات الرسمية</h4>
+                                    <ul class="cert-list">
+                                        <li class="cert-item" v-for="(cred, cIdx) in coach.credentials" :key="cIdx">
+                                            <!-- Checkmark badge SVG -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="cert-icon">
+                                                <polyline points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                            <span>{{ cred }}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Bottom CTA linked to WhatsApp with custom prefilled text per coach -->
+                            <div class="coach-cta-container">
+                                <a :href="getWhatsAppLink(coach.whatsappText)" class="btn-coach-whatsapp">
+                                    <!-- WhatsApp SVG -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12.004 0C5.378 0 0 5.38 0 12.004c0 2.112.547 4.16 1.587 5.964L.057 24l6.156-1.619c1.756.955 3.736 1.459 5.79 1.464 6.626 0 12.004-5.38 12.004-12.004C24.008 5.38 18.63 0 12.004 0zm0 22.008c-1.895 0-3.754-.51-5.394-1.47l-.387-.23-3.666.962.98-3.57-.253-.402c-1.054-1.68-1.611-3.635-1.611-5.694.004-5.52 4.49-10.007 10.01-10.007 2.67 0 5.18 1.04 7.07 2.93a9.922 9.922 0 0 1 2.93 7.077c-.004 5.52-4.49 10.004-10.01 10.004z"/>
+                                    </svg>
+                                    <span>تواصل مع المدرب لحجز تقييم</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Facility and Staff Integration Section (Single Pitch highlight) -->
+        <section class="facility-highlight-banner text-center">
+            <div class="container" data-aos="fade-up">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="facility-card">
+                            <div class="facility-icon-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="3" width="20" height="18" rx="2" ry="2"></rect>
+                                    <line x1="12" y1="3" x2="12" y2="21"></line>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                </svg>
+                            </div>
+                            <h2 class="text-white fw-bold mb-3">ملعب فردي آمن وطاقم متكامل ومكثف 🔒</h2>
+                            <p class="text-gray-muted fs-5 leading-lg mb-4">
+                                إن تركيز طاقمنا التدريبي على ملعبنا الفردي والمغلق هو الضامن الأساسي لنمو طفلك الكروي بأمان تام. لا تداخل في الحصص التدريبية، الملعب بالكامل مع المدربين تحت خدمة المجموعة المسجلة فقط، مما يعطي كفاءة فنية قصوى في التوجيه وحماية تامة من أي إصابات.
+                            </p>
+                            <a :href="getPhoneCallLink()" class="btn-nav-call text-gold px-4 py-2 mt-2">
+                                <span>تواصل تلفونياً لمعرفة مواعيد التقييم</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container text-center">
+                <!-- Footer logo badge -->
+                <div class="footer-logo text-white">
+                    <div class="logo-badge mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--champions-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            <path d="M2 12h20"></path>
+                        </svg>
+                    </div>
+                    <span class="d-block mt-2">{{ config.academyName }}</span>
+                </div>
+                
+                <p class="footer-desc">
+                    نهتم بالتطوير الحقيقي ونؤمن بأن تأسيس الفئة السنية من الصغر في بيئة آمنة ومحمية هو حجر الأساس لبناء لاعب ذكي قادر على المنافسة والابتكار. ملعبنا الفردي الآمن تحت تصرف طفلك ومجموعته فقط.
+                </p>
+
+                <!-- SVG Social Icons links -->
+                <div class="footer-social-links">
+                    <!-- Instagram -->
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    
+                    <!-- Twitter/X -->
+                    <a href="#" class="social-link" aria-label="X">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    
+                    <!-- YouTube -->
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Copyright -->
+                <div class="footer-copyright">
+                    <p class="m-0">&copy; 2026 {{ config.academyName }} - جميع الحقوق محفوظة. تم التدريب وتطوير الكوادر الفنية.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Vue 3 CDN (Global API) -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Bootstrap 5 Bundle JS CDN (including Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS JS CDN for scroll animations -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- Separation of concerns - Vue engine & standard initializations -->
+    <script src="js/coaches.js"></script>
+</body>
+</html>

@@ -1,0 +1,546 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap');
+
+:root {
+    --pitch-green: #2e7d32;
+    --pitch-green-glow: rgba(46, 125, 50, 0.4);
+    --pitch-green-dark: #1b5e20;
+    --premium-dark: #0a0f0d;
+    --premium-dark-card: #121a16;
+    --champions-gold: #ffd700;
+    --champions-gold-glow: rgba(255, 215, 0, 0.3);
+    --gold-gradient: linear-gradient(135deg, #ffd700, #bfa100);
+    --green-gradient: linear-gradient(135deg, #2e7d32, #1b5e20);
+    --white: #ffffff;
+    --gray-muted: #a0b2a6;
+    --border-color: rgba(46, 125, 50, 0.2);
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base resets & styles matching Home Page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+body {
+    background-color: var(--premium-dark);
+    color: var(--white);
+    direction: rtl;
+    text-align: right;
+    overflow-x: hidden;
+}
+
+[v-cloak] {
+    display: none !important;
+}
+
+/* Custom Scrollbar track */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--premium-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--pitch-green);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--champions-gold);
+}
+
+/* Navbar styles (Identical to Home page for seamlessness) */
+.navbar {
+    transition: var(--transition-smooth);
+    padding: 1.25rem 0;
+    border-bottom: 1px solid transparent;
+}
+
+.navbar.navbar-scrolled {
+    background-color: rgba(10, 15, 13, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.75rem 0;
+}
+
+.nav-link {
+    color: var(--white) !important;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -5px;
+    right: 0;
+    background: var(--gold-gradient);
+    transition: var(--transition-smooth);
+    border-radius: 2px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--champions-gold) !important;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+.logo-badge {
+    background: var(--green-gradient);
+    border: 2px solid var(--champions-gold);
+    border-radius: 12px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px var(--pitch-green-glow);
+}
+
+.btn-nav-call {
+    border: 2px solid var(--champions-gold);
+    color: var(--champions-gold) !important;
+    background: transparent;
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 700;
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-nav-call:hover {
+    background: var(--gold-gradient);
+    color: var(--premium-dark) !important;
+    box-shadow: 0 0 15px var(--champions-gold-glow);
+    transform: translateY(-2px);
+}
+
+/* Page Header / Subpage Hero */
+.coaches-header-section {
+    position: relative;
+    padding: 10rem 0 5rem 0;
+    background: linear-gradient(180deg, rgba(10, 15, 13, 0.6) 0%, rgba(10, 15, 13, 1) 100%), 
+                url('https://images.pexels.com/photos/30726603/pexels-photo-30726603.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=500&w=1920');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.header-badge {
+    background-color: rgba(46, 125, 50, 0.2);
+    border: 1px solid var(--pitch-green);
+    color: var(--champions-gold);
+    border-radius: 50px;
+    padding: 0.4rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.header-title {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.header-subtitle {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    color: var(--gray-muted);
+    max-width: 700px;
+    margin: 0 auto;
+    font-weight: 400;
+}
+
+/* Filter controls / Categories */
+.coaches-filter-section {
+    padding: 2rem 0;
+    background-color: rgba(18, 26, 22, 0.3);
+    border-bottom: 1px solid rgba(46, 125, 50, 0.1);
+}
+
+.filter-btn {
+    background: rgba(18, 26, 22, 0.8);
+    border: 1px solid var(--border-color);
+    color: var(--white);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: var(--transition-smooth);
+    margin: 0.25rem;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--green-gradient);
+    border-color: var(--champions-gold);
+    box-shadow: 0 0 15px var(--pitch-green-glow);
+    transform: translateY(-2px);
+}
+
+/* Coaches Cards Section */
+.coaches-grid-section {
+    padding: 6rem 0;
+    position: relative;
+}
+
+.coaches-grid-section::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: var(--pitch-green-glow);
+    filter: blur(180px);
+    border-radius: 50%;
+    top: 20%;
+    right: 5%;
+    pointer-events: none;
+}
+
+.coaches-grid-section::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: var(--champions-gold-glow);
+    filter: blur(180px);
+    border-radius: 50%;
+    bottom: 10%;
+    left: 5%;
+    pointer-events: none;
+}
+
+/* Coach Card Premium Layout */
+.coach-card {
+    background: linear-gradient(145deg, rgba(18, 26, 22, 0.95) 0%, rgba(10, 15, 13, 0.95) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    overflow: hidden;
+    height: 100%;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    position: relative;
+}
+
+.coach-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--green-gradient);
+    transition: var(--transition-smooth);
+}
+
+.coach-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--champions-gold);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 15px var(--pitch-green-glow);
+}
+
+.coach-card:hover::after {
+    background: var(--gold-gradient);
+}
+
+/* Card Image Wrapper with Hover zoom and badge overlays */
+.coach-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.coach-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.coach-card:hover .coach-card-img {
+    transform: scale(1.08);
+}
+
+.experience-badge {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: var(--green-gradient);
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    border: 1.5px solid var(--champions-gold);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.availability-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(10, 15, 13, 0.85);
+    backdrop-filter: blur(5px);
+    color: var(--champions-gold);
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 0.25rem 0.85rem;
+    border-radius: 50px;
+    border: 1px solid var(--champions-gold);
+    z-index: 2;
+}
+
+/* Card Content Details */
+.coach-body {
+    padding: 2rem;
+    flex-grow: 1;
+}
+
+.coach-role-title {
+    font-size: 0.9rem;
+    color: var(--champions-gold);
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+}
+
+.coach-name {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+/* Specialties Badges row */
+.coach-specialty-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.specialty-badge {
+    background-color: rgba(46, 125, 50, 0.15);
+    border: 1px solid rgba(46, 125, 50, 0.3);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.specialty-badge svg {
+    color: var(--champions-gold);
+}
+
+/* Certificates List layout */
+.certifications-title {
+    font-size: 0.85rem;
+    color: var(--gray-muted);
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(46, 125, 50, 0.15);
+    padding-bottom: 0.4rem;
+}
+
+.cert-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cert-item {
+    font-size: 0.88rem;
+    color: var(--white);
+    opacity: 0.9;
+    margin-bottom: 0.65rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+}
+
+.cert-icon {
+    color: var(--champions-gold);
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+/* Direct Coach CTA Bottom Button */
+.coach-cta-container {
+    padding: 0 2rem 2rem 2rem;
+}
+
+.btn-coach-whatsapp {
+    width: 100%;
+    background: rgba(46, 125, 50, 0.1);
+    color: var(--white);
+    border: 2px solid var(--pitch-green);
+    border-radius: 50px;
+    padding: 0.8rem 1.5rem;
+    font-weight: 800;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.coach-card:hover .btn-coach-whatsapp {
+    background: var(--green-gradient);
+    border-color: var(--champions-gold);
+    color: var(--white);
+    box-shadow: 0 10px 25px var(--pitch-green-glow);
+}
+
+/* Pitch / Facility Highlight section specifically for the single pitch environment */
+.facility-highlight-banner {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, var(--premium-dark) 0%, rgba(12, 20, 16, 1) 50%, var(--premium-dark) 100%);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.facility-card {
+    background: rgba(18, 26, 22, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 3rem;
+}
+
+.facility-icon-box {
+    width: 60px;
+    height: 60px;
+    background: var(--green-gradient);
+    border: 2px solid var(--champions-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    margin: 0 auto 1.5rem auto;
+}
+
+/* Footer elements matching Home */
+footer {
+    background-color: #050706;
+    border-top: 1px solid rgba(46, 125, 50, 0.15);
+    padding: 4rem 0 2rem 0;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 900;
+    font-size: 1.8rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.footer-desc {
+    color: var(--gray-muted);
+    max-width: 500px;
+    margin: 0 auto 2.5rem auto;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.footer-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 3rem;
+}
+
+.social-link {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: rgba(18, 26, 22, 1);
+    border: 1px solid var(--border-color);
+    color: var(--gray-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+    text-decoration: none;
+}
+
+.social-link:hover {
+    color: var(--champions-gold);
+    border-color: var(--champions-gold);
+    background-color: rgba(46, 125, 50, 0.1);
+    transform: translateY(-4px);
+}
+
+.footer-copyright {
+    border-top: 1px solid rgba(46, 125, 50, 0.1);
+    padding-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--gray-muted);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: rgba(10, 15, 13, 0.98);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-top: 1rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    .nav-link {
+        padding: 0.75rem 0;
+        text-align: center;
+    }
+    
+    .nav-link::after {
+        display: none;
+    }
+    
+    .btn-nav-call {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+}
