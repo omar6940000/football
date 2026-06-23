@@ -25,7 +25,7 @@ createApp({
         const squads = reactive({
             group1: {
                 coachNotes: 'أبهرني هؤلاء البراعم هذا الأسبوع بتطبيقهم الرائع لتمارين الرشاقة، والتمرير القصير السريع في المساحات الضيقة على ملعبنا التدريبي. التركيز كان استثنائياً، والتوافق العضلي العصبي يتقدم بخطى متسارعة.',
-                formation: '4-3-3',
+                formation: '4-4-2',
                 startingXI: [
                     { id: 1, name: 'سلطان فهد', position: 'ST', rating: 94, title: 'القطار السريع 🚄', top: '16%', left: '50%', image: 'https://images.pexels.com/photos/31172906/pexels-photo-31172906.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=150&w=150' },
                     { id: 2, name: 'عمر ناصر', position: 'LW', rating: 92, title: 'الأعصار الصغير ⚡', top: '22%', left: '20%', image: 'https://images.pexels.com/photos/37455467/pexels-photo-37455467.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=150&w=150' },
