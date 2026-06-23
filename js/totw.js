@@ -24,7 +24,7 @@ createApp({
         // Squads Mock Database with Starting XI positioned accurately using coordinate percentages
         const squads = reactive({
             group1: {
-                coachNotes: 'أبهرني هؤلاء البراعم هذا الأسبوع بتطبيقهم الرائع لتمارين الرشاقة، والتمرير القصير السريع في المساحات الضيقة على ملعبنا التدريبي. التركيز كان استثنائياً، والتوافق العضلي العصبي يتقدم بخطى متسارعة.',
+                coachNotes: ' هؤلاء البراعم هذا الأسبوع بتطبيقهم الرائع لتمارين الرشاقة، والتمرير القصير السريع في المساحات الضيقة على ملعبنا التدريبي. التركيز كان استثنائياً، والتوافق العضلي العصبي يتقدم بخطى متسارعة.',
                 formation: '4-4-2',
                 startingXI: [
                     { id: 1, name: 'سلطان فهد', position: 'ST', rating: 94, title: 'القطار السريع 🚄', top: '16%', left: '50%', image: 'https://images.pexels.com/photos/31172906/pexels-photo-31172906.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=150&w=150' },
